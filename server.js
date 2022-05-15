@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const authRoutes = require('./routes/authRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
 require('dotenv').config();
 
 const app = express();
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/payment', authRoutes);
+app.use('/api/payment', paymentRoutes);
 
 app.use((error, req, res, next) => {
     console.log(error);
