@@ -28,9 +28,40 @@ const deleteReservation = (req, res) => {
     });
 };
 
+// Add new Reservation
+const createReservation = (req, res) => {
+  try {
+    const newReservation = new Reservation({
+      cusName: req.body.cusName,
+      movieName: req.body.movieName,
+      theater: req.body.theater,
+      date: req.body.date,
+      showTime: req.body.showTime,
+      seats: req.body.seats,
+    });
+
+    newReservation
+      .save()
+      .then(() => {
+        res.status(201).json({
+          message: "Reservation Created",
+          newReservation: newReservation,
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({
+          error: err.message,
+        });
+      });
+  } catch (e) {
+    res.status(500).json(e);
+  }
+};
+
 const all = {
   viewAll,
   deleteReservation,
+  createReservation,
 };
 
 module.exports = all;
