@@ -1,9 +1,17 @@
 const mongoose = require("mongoose");
 
 const reservationSchema = mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
   cusName: {
     type: String,
     required: true,
+  },
+  image:{
+    type: String,
+    required:true,
   },
   movieName: {
     type: String,
@@ -21,7 +29,7 @@ const reservationSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  seats: {
+  noOfSeats: {
     type: Number,
     required: true,
   },

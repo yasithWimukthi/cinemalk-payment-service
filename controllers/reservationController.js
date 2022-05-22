@@ -32,12 +32,14 @@ const deleteReservation = (req, res) => {
 const createReservation = (req, res) => {
   try {
     const newReservation = new Reservation({
+      userId:req.body.userId,
       cusName: req.body.cusName,
+      image:req.body.image,
       movieName: req.body.movieName,
       theater: req.body.theater,
       date: req.body.date,
       showTime: req.body.showTime,
-      seats: req.body.seats,
+      noOfSeats: req.body.noOfSeats,
     });
 
     newReservation
